@@ -6,6 +6,7 @@ pragma solidity ^0.8.9;
 contract Assessment {
     address payable public owner;
     uint256 public balance;
+    int[] public transactions;
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
@@ -33,6 +34,8 @@ contract Assessment {
 
         // emit the event
         emit Deposit(_amount);
+        addTransaction( int(_amount) );
+
     }
 
     // custom error
@@ -56,5 +59,14 @@ contract Assessment {
 
         // emit the event
         emit Withdraw(_withdrawAmount);
+        addTransaction( -int(_withdrawAmount) );
+    }
+
+    function addTransaction(int amount) public  {
+        transactions.push(amount);
+    }
+
+    function getTransactions()  public view returns(int[] memory)  { 
+        return transactions;
     }
 }

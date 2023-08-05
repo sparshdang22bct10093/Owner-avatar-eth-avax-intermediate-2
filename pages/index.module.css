@@ -1,0 +1,10 @@
+.table{
+    border:2px solid red;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.table td{
+    border: 1px solid red;
+    width: 8rem;
+}
